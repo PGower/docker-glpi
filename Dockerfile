@@ -12,7 +12,7 @@ ENV HOME /var/www
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get -y install \
   wget \
   tar \
-  gunzip \
+  gzip \
   msmtp \
   ca-certificates \
   supervisor \
@@ -44,6 +44,7 @@ RUN php5enmod imap && \
 
 ADD supervisord.conf /supervisord.conf
 ADD start.sh /start.sh
+RUN chmod +x /start.sh
 ADD conf.d/ /etc/confd/conf.d
 ADD templates /etc/confd/templates
 
