@@ -1,10 +1,10 @@
 <VirtualHost *:80>
-        ServerName {{or (getv "/apache/domain") "www.example.com"}}
+        ServerName {{if exists "/apache/domain" }}{{getv "/apache/domain"}}{{else}}www.example.com{{end}}
 
-        ServerAdmin {{or (getv "/apache/webmaster") "webmaster@localhost"}}
+        ServerAdmin {{if exists "/apache/webmaster" }}{{getv "/apache/webmaster"}}{{else}}webmaster@localhost{{end}}
         DocumentRoot /var/www/glpi
 
-        ErrorLog ${APACHE_LOG_DIR}/{{or (getv "/apache/domain") ""}}error.log
-        CustomLog ${APACHE_LOG_DIR}/{{or (getv "/apache/domain") ""}}access.log combined
+        ErrorLog ${APACHE_LOG_DIR}/{{if exists "/apache/domain" }}{{getv "/apache/domain"}}{{else}}{{end}}error.log
+        CustomLog ${APACHE_LOG_DIR}/{{if exists "/apache/domain" }}{{getv "/apache/domain"}}{{else}}{{end}}access.log combined
         ServerSignature Off
 </VirtualHost>

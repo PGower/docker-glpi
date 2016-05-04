@@ -1,8 +1,8 @@
 <?php
 	class DB extends DBmysql {
-		var $dbhost = '{{or (getv "/mysql/host") "mysql"}}';
-		var $dbuser    = '{{or (getv "/mysql/username") "root"}}';
-		var $dbpassword= '{{or (getv "/mysql/password") "password"}}';
-		var $dbdefault = '{{or (getv "/mysql/database") "glpi"}}';
+		var $dbhost = '{{if exists "/mysql/host" }}{{getv "/mysql/host"}}{{else}}mysql{{end}}';
+		var $dbuser    = '{{if exists "/mysql/username" }}{{getv "/mysql/username"}}{{else}}root{{end}}';
+		var $dbpassword= '{{if exists "/mysql/password" }}{{getv "/mysql/password"}}{{else}}password{{end}}';
+		var $dbdefault = '{{if exists "/mysql/database" }}{{getv "/mysql/database"}}{{else}}glpi{{end}}';
  	}
 ?>
