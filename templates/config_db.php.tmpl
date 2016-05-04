@@ -1,0 +1,8 @@
+<?php
+	class DB extends DBmysql {
+		var $dbhost = '{{getv "/mysql/host" "mysql"}}';
+		var $dbuser    = '{{getv "/mysql/username" "root"}}';
+		var $dbpassword= '{{getv "/mysql/password" "password"}}';
+		var $dbdefault = '{{getv "/mysql/database" "glpi"}}';
+ 	}
+?>

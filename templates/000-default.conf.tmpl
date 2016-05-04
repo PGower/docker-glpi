@@ -1,0 +1,10 @@
+<VirtualHost *:80>
+        ServerName {{getv "/apache/domain" "www.example.com"}}
+
+        ServerAdmin {{getv "/apache/webmaster" "webmaster@localhost"}}
+        DocumentRoot /var/www/glpi
+
+        ErrorLog ${APACHE_LOG_DIR}/{{getv "/apache/domain" ""}}error.log
+        CustomLog ${APACHE_LOG_DIR}/{{getv "/apache/domain" ""}}access.log combined
+        ServerSignature Off
+</VirtualHost>

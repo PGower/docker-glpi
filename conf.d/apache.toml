@@ -1,0 +1,7 @@
+[template]
+src = "000-default.conf.tmpl"
+dest = "/etc/apache2/sites-enabled/000-default.conf"
+keys = [
+	"/apache/domain",
+	"/apache/webmaster",
+]

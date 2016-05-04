@@ -1,0 +1,9 @@
+[template]
+src = "config_db.php.tmpl"
+dest = "/var/www/glpi/config/config_db.php"
+keys = [
+	"/mysql/host",
+    "/mysql/username",
+    "/mysql/password",
+    "/mysql/database",
+]
