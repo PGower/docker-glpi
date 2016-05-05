@@ -1,31 +1,28 @@
-version: '1'
+web:
+  image: pgower/glpi
 
-services:
-  web:
-    image: pgower/glpi
-    
-    environment:
-      - APACHE_DOMAIN=glpi.stmonicas.qld.edu.au
-      - APACHE_WEBMASTER=pgower+glpi@stmonicas.qld.edu.au
-      - MYSQL_HOST=mysql
-      - MYSQL_USERNAME=root
-      - MYSQL_PASSWORD=pa55w0rd
-      - MYSQL_DATABASE=glpi
-      - VIRTUAL_HOST=glpi.stmonicas.qld.edu.au
-    expose:
-      - "62354"
-    links:
-      - db:mysql
+  environment:
+    - APACHE_DOMAIN=glpi.stmonicas.qld.edu.au
+    - APACHE_WEBMASTER=pgower+glpi@stmonicas.qld.edu.au
+    - MYSQL_HOST=mysql
+    - MYSQL_USERNAME=root
+    - MYSQL_PASSWORD=pa55w0rd
+    - MYSQL_DATABASE=glpi
+    - VIRTUAL_HOST=glpi.stmonicas.qld.edu.au
+  expose:
+    - "62354"
+  links:
+    - db:mysql
 
-  dbdata:
-    image: ubuntu:14.04
-    volumes:
-      - /var/lib/mysql
+dbdata:
+  image: ubuntu:14.04
+  volumes:
+    - /var/lib/mysql
 
-  db:
-    image: mariadb:10.1.12
-    environment:
-      - MYSQL_ROOT_PASSWORD='pa55w0rd'
-      - MYSQL_DATABASE=glpi
-    volumes_from:
-      - dbdata
+db:
+  image: mariadb:10.1.12
+  environment:
+    - MYSQL_ROOT_PASSWORD='pa55w0rd'
+    - MYSQL_DATABASE=glpi
+  volumes_from:
+    - dbdata
