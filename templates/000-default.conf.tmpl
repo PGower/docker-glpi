@@ -4,6 +4,12 @@
         ServerAdmin {{if exists "/apache/webmaster" }}{{getv "/apache/webmaster"}}{{else}}webmaster@localhost{{end}}
         DocumentRoot /var/www/glpi
 
+	Alias /agents /var/www/agents
+
+	<directory /var/www/agents>
+		Options Indexes 
+	</directory>
+
         ErrorLog ${APACHE_LOG_DIR}/{{if exists "/apache/domain" }}{{getv "/apache/domain"}}{{else}}{{end}}error.log
         CustomLog ${APACHE_LOG_DIR}/{{if exists "/apache/domain" }}{{getv "/apache/domain"}}{{else}}{{end}}access.log combined
         ServerSignature Off

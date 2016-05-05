@@ -9,4 +9,4 @@ set -e
 # chmod 644 /data/upload/include/ost-config.php
 
 #Launch supervisor to manage processes
-exec /usr/bin/supervisord -c /data/supervisord.conf
+exec /usr/bin/supervisord -c /supervisord.conf
